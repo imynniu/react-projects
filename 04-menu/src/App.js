@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import menu from "./data";
 import BaseContainer from "./components/container/baseContainer";
@@ -8,10 +8,7 @@ import MenuItems from "./menuItems";
 import Categories from "./categories";
 function App() {
   const [menuItems, setMenusItems] = useState(menu);
-  const [categories, setCategories] = useState([
-    "All",
-    ...new Set(menu.map((item) => item.category)),
-  ]);
+  const [categories, setCategories] = useState([]);
 
   const fillterCategories = (name) => {
     if (name === "All") {
@@ -22,6 +19,9 @@ function App() {
       setMenusItems(newMenu);
     }
   };
+  useEffect(() => {
+    setCategories(["All", ...new Set(menu.map((item) => item.category))]);
+  }, []);
 
   return (
     <BaseContainer>
