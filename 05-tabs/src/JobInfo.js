@@ -1,8 +1,10 @@
 import Duties from "./Duties";
-const JobInfo = ({ jobs }) => {
-  const { title, dates, duties, company } = jobs[0];
+const JobInfo = ({ jobs, activeId }) => {
+  const { title, dates, duties, company } = jobs.filter(
+    (item) => item.company === activeId
+  )[0];
   return (
-    <div className="w-2/3 h-auto  flex flex-col  ">
+    <div className="w-2/3 h-auto  flex flex-col ">
       <div className="text-3xl text-gray-800 captialize">{title}</div>
       <div className="flex flex-raw mt-2">
         <div className="text-xl bg-gray-300 px-4 text-gray-600 w-auto rounded">
@@ -10,7 +12,9 @@ const JobInfo = ({ jobs }) => {
         </div>
       </div>
       <div className="text-base text-gray-500 mt-3">{dates}</div>
-      <Duties duties={duties} />
+      <div className="w-full ">
+        <Duties duties={duties} />
+      </div>
     </div>
   );
 };

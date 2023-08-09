@@ -36,7 +36,15 @@
    npm install --save-dev @babel/plugin-proposal-private-property-in-object
    ```
 
-   
+3. 安装react-icon
+
+   ```js
+   npm install react-icons --save
+   ```
+
+   https://react-icons.github.io/react-icons
+
+​	
 
 
 
